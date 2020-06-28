@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	var $viewport = $(document).find("#viewport");
 	var $fil = $viewport.find("#fil");
 	var $inner = $fil.find("#inner");
@@ -8,7 +9,7 @@ $(document).ready(function() {
 	var $med = $pubs.find(".med");
 	var $dis = $pubs.find(".dis");
 
-  var baseWidth = 1540;
+	var baseWidth = 1540;
 
 	var $n0 = $fil.find(".n0");
 	var $n1 = $fil.find(".n1");
@@ -24,11 +25,11 @@ $(document).ready(function() {
 
 
 	var resizeViewport = function(event, ui) {
-    console.log("resizeViewport");
-    var windowWidth = $(window).width();
-    var scale = windowWidth / baseWidth;
+		console.log("resizeViewport");
+		var windowWidth = $(window).width();
+		var scale = windowWidth / baseWidth;
 		$viewport.css({
-      transform: "scale(" + scale + ")"
+			transform: "scale(" + scale + ")"
 		});
 	};
 
@@ -177,18 +178,21 @@ $(document).ready(function() {
 		console.log("puzzZOff");
 		// chaque pub passe devant la précédente
 		var zIndex = 0;
-    var list = $blocs;
-		$blocs.each(function() {
+		var list = $blocs;
+		$pubs.children().each(function() {
 			zIndex++;
 			$(this).css({
 				"z-index": zIndex
 			});
+			// if ($(this).hasClass("last")) {
+			// 	console.log("last");
+			//
+			// }
+			// if (callback) {
+			// 	// console.log("calling callback");
+			// 	callback.call();
+			// }
 		});
-    // console.log("done changing Z");
-    if (callback) {
-      // console.log("calling callback");
-      callback.call();
-    }
 	}
 
 	var puzzZOn = function() {
@@ -295,16 +299,25 @@ $(document).ready(function() {
 		});
 	}
 
+	// var delayOn = function() {
+	// 	$([$puz1, $puz2, $puz3]).each(function() {
+	// 		$(this).children().each(function() {
+	//
+	// 		});
+	// 	});
+	// }
+
 	var gigotOn = function() {
 		$([$puz1, $puz2, $puz3]).each(function() {
 			$(this).children().addClass("gigot");
 		});
 	}
 
-
-
-
-
+	var gigotOff = function() {
+		$([$puz1, $puz2, $puz3]).each(function() {
+			$(this).children().removeClass("gigot");
+		});
+	}
 
 	var initialize = function() {
 		$pubs.css({
@@ -314,36 +327,41 @@ $(document).ready(function() {
 		$blocs.css({
 			"left": 0
 		})
+		// $blocs.last().addClass("last");
 		blocsReorder();
 		attrHeights();
 		stackY();
 		scrollTo($n1);
-    puzzZOff();
+		puzzZOff();
 		puzzOn();
-    resizeViewport();
+		resizeViewport();
 	}
 
 	initialize();
-
+	$(window).resize(function() {
+		resizeViewport();	
+	});
 
 	var steps = [
 		function() {
 			scrollTo($puz2);
 			// puzzXOn();
 			puzzFocusOn();
-      puzzZOn();
+			puzzZOn();
 		},
 		function() {
 			gigotOn();
 		},
 		function() {
+			gigotOff();
 			mixDisOff();
 		},
 		function() {
 			mixMedOff();
 		},
 		function() {
-      puzzZOff(puzzOff);
+			puzzZOff();
+			puzzOff();
 			puzzFocusOff();
 			scrollTo($n6);
 		},
