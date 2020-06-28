@@ -1,0 +1,292 @@
+* {
+	/* top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0; */
+	/* box-shadow: inset 0 0 0 1px #FF7369; */
+}
+
+html {
+	background: #000;
+}
+
+body {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	/* width: 1540px;
+	height: 1060px; */
+	/* width: calc(1540px * 0.5);
+	height: calc(1060px * 0.5); */
+	width: 100vw;
+	height: 100vh;
+	box-sizing: border-box;
+	overflow: hidden !important;
+}
+
+p {
+	font-family: Inter;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14.72px;
+	line-height: 20px;
+	color: #E5E5E5;
+	margin: 0;
+}
+
+#viewport {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	/* this is dirty */
+	/* could pilot this with js so it becomes more responsive */
+	/* or use a few media queries */
+	/* transform:
+		scale(0.5)
+		translate(0, -50%); */
+	transform-origin: top;
+	/* background: lightblue; */
+}
+
+#viewport p {
+	/* font-size: calc(100vw * 14.72 / 1540);
+	line-height: calc(100vw * 20px / 1540); */
+}
+
+#fil {
+	position: absolute;
+	width: 380px;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+#inner {
+	position: absolute;
+	left: 0;
+	height: calc(100% - 260px);
+	width: 100%;
+}
+
+.pub {
+	position: absolute;
+	width: 380px;
+	/* width: 49.35064936vw; */
+}
+
+.bloc {
+	position: absolute;
+	display: flex;
+	width: calc(100% - 40px);
+	align-items: center;
+	margin: 0;
+	padding: 20px;
+	box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .3);
+	background: #454B4E;
+}
+
+#inner, .pub, .bloc {
+	transition: all 600ms ease-in-out;
+	/* -webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0); */
+}
+
+.aut {
+	top: 0;
+	border-radius: 10px 10px 0 0;
+}
+
+.med {
+	top: 60px;
+	padding: 0 20px;
+	height: 220px;
+}
+
+.dis {
+	top: 280px;
+	border-radius: 0 0 10px 10px;
+}
+
+.bloc p {
+	margin: 0;
+	padding: 0;
+	/* padding: 0 0 10px 0; */
+}
+
+.aut p {
+	font-weight: bold;
+}
+
+.aut .avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	margin: -10px 10px -10px 0;
+}
+
+.med img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 1;
+}
+
+.med .darkener {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #282C2F;
+	opacity: 0.3;
+	z-index: 0;
+}
+
+.footer {
+	/* display: none !important; */
+	position: absolute;
+	width: calc(100% - 40px);
+	height: auto;
+	/* background: rgba(0, 0, 255, 0.5); */
+	left: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 2;
+	padding: 20px;
+}
+
+.footer .stepname, .arrow {
+	display: inline-block;
+	padding: 10px 13px;
+}
+
+.footer .stepname {
+	min-width: 100px;
+	display: flex;
+	justify-content: center;
+}
+
+.footer .arrow {
+	cursor: pointer;
+}
+
+.footer p {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #FF7369;
+}
+
+.footer #left, .footer .stepname {
+	visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+svg {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/*color classes*/
+/* .c-default {
+	color: #E5E5E5;
+} */
+.c-background {
+	fill: #282C2F;
+	background: #282C2F;
+}
+
+.c-red {
+	fill: #FF7369;
+	background: #FF7369;
+}
+
+.c-green {
+	fill: #4DAB9A;
+	background: #4DAB9A;
+}
+
+.c-yellow {
+	fill: #FFDC49;
+	background: #FFDC49;
+}
+
+.c-darkgray {
+	fill: #454B4E;
+	background: #454B4E;
+}
+
+.c-lightgray {
+	fill: #999999;
+	background: #999999;
+}
+
+.low-opacity {
+	opacity: 0.3;
+}
+
+.gigot {
+	animation-name: gigot;
+	animation-duration: 800ms;
+	animation-iteration-count: 1;
+	animation-timing-function: cubic-bezier(0, 2, 1, 1);
+}
+
+@keyframes gigot {
+	0% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(-40px, 0);
+	}
+
+	75% {
+		transform: translate(40px, 0);
+	}
+
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+.med {
+	animation-delay: 150ms;
+}
+.dis {
+	animation-delay: 300ms;
+}
