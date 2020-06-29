@@ -18,7 +18,9 @@ $(document).ready(function() {
 	var $n4 = $fil.find(".n4");
 	var $n5 = $fil.find(".n5");
 	var $n6 = $fil.find(".n6");
-	var $n7 = $fil.find(".n6");
+	var $n7 = $fil.find(".n7");
+	var $n8 = $fil.find(".n8");
+	var $n9 = $fil.find(".n9");
 	// var $pubsLength = $fil.find(".pub").length;
 	// var $startOffset = $fil.find(".start").index();
 	var $rightArrow = $(document).find("#right");
@@ -39,11 +41,10 @@ $(document).ready(function() {
 
 	var margin = 20;
 	var scrollCenter = 260;
-	// var $inFocus = $n0;
 
-	var $puz1 = $n3;
-	var $puz2 = $n4;
-	var $puz3 = $n5;
+	var $puz1 = $n4;
+	var $puz2 = $n5;
+	var $puz3 = $n6;
 	var puz2Top = $puz2.css("top");
 	// var puz2Height = 0;
 
@@ -55,7 +56,7 @@ $(document).ready(function() {
 	var attrHeight = function(pub) {
 		var pubHeight = margin;
 		pub.children().each(function() {
-			var pubChildHeight = $(this).outerHeight();
+			var pubChildHeight = $(this).innerHeight();
 			pubHeight = pubHeight + pubChildHeight;
 		});
 		pub.css({
@@ -328,21 +329,30 @@ $(document).ready(function() {
 			"left": 0
 		})
 		// $blocs.last().addClass("last");
-		blocsReorder();
-		attrHeights();
-		stackY();
-		scrollTo($n1);
-		puzzZOff();
-		puzzOn();
-		resizeViewport();
+		setTimeout(function() {
+			attrHeights();
+			blocsReorder();
+			stackY();
+			scrollTo($n1);
+			puzzZOff();
+			puzzOn();
+			resizeViewport();
+			// this is because of attrHeights being late
+		}, 100);
 	}
 
 	initialize();
 	$(window).resize(function() {
-		resizeViewport();	
+		resizeViewport();
 	});
 
 	var steps = [
+		function() {
+			scrollTo($n2);
+		},
+		function() {
+			scrollTo($n3);
+		},
 		function() {
 			scrollTo($puz2);
 			// puzzXOn();
@@ -364,6 +374,9 @@ $(document).ready(function() {
 			puzzOff();
 			puzzFocusOff();
 			scrollTo($n6);
+		},
+		function() {
+			scrollTo($n7);
 		},
 		function() {
 			puzzOn();
