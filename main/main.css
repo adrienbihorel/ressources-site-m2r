@@ -273,10 +273,13 @@ svg {
 @keyframes gigot {
 	0% {
 		transform: translate(0, 0);
+		/* background: #454B4E; */
+		/* attention : l'easing fait sortir les couleurs des valeurs prévues */
 	}
 
 	50% {
 		transform: translate(-40px, 0);
+		/* background: #999999; */
 	}
 
 	75% {
@@ -285,6 +288,7 @@ svg {
 
 	100% {
 		transform: translate(0, 0);
+		/* background: #454B4E; */
 	}
 }
 
@@ -295,3 +299,69 @@ svg {
 .dis {
 	animation-delay: 300ms;
 }
+
+
+
+
+
+/* .n0 {
+	animation-delay: 0ms;
+}
+.n1 {
+	animation-delay: 100ms;
+}
+.n2 {
+	animation-delay: 200ms;
+}
+.n3 {
+	animation-delay: 300ms;
+}
+.n4 {
+	animation-delay: 400ms;
+}
+.n5 {
+	animation-delay: 500ms;
+}
+.n6 {
+	animation-delay: 600ms;
+}
+.n7 {
+	animation-delay: 700ms;
+}
+.n8 {
+	animation-delay: 800ms;
+}
+.n9 {
+	animation-delay: 900ms;
+}
+.n10 {
+	animation-delay: 1000ms;
+} */
+
+
+
+
+
+
+
+
+/* .n4 .med {
+	animation-delay: 100ms;
+}
+.n4 .dis {
+	animation-delay: 200ms;
+}
+
+.n5 .med {
+	animation-delay: 300ms;
+}
+.n5 .dis {
+	animation-delay: 400ms;
+}
+
+.n6 .med {
+	animation-delay: 500ms;
+}
+.n6 .dis {
+	animation-delay: 600ms;
+} */

@@ -1,0 +1,198 @@
+// this comment to tell node sass to compile this scss file to css
+
+// to do
+// - draggable swapAnimation seems to ignore the margins of dragdable-source
+// - draggable swapAnimation z-index issue
+
+@import 'lib/utilities';
+@import 'lib/fonts';
+@import 'lib/colors';
+@import 'lib/cursor';
+
+$grid-size-abs: 10px;
+$grid-size-rel: 1rem;
+
+$line-height-abs: $grid-size-abs * 2;
+$font-size-abs: $line-height-abs * 0.736;
+$line-height-rel: $grid-size-rel * 2;
+$font-size-rel: $line-height-rel * 0.736;
+
+$fil-scroll-ref: $grid-size-rel * 26;
+$pub-margin: $grid-size-rel * 3;
+// $pub-margin: 0;
+	$bloc-width: $grid-size-rel * 38;
+	$bloc-padding: $grid-size-rel * 2;
+	$bloc-padded-width: $bloc-width - $bloc-padding * 2;
+	$bloc-border-radius: $grid-size-rel * 2;
+	$bloc-color: $c-b-gray;
+	$bloc-hover-color: $c-red;
+	$bloc-active-color: $c-red;
+		$aut-height: $grid-size-rel * 6;
+			$avatar-size: $grid-size-rel * 8;
+		$med-height: $grid-size-rel * 22;
+
+@import 'lib/animations';
+@import 'lib/footer';
+
+
+* {
+	// @include block-reset;
+	// @include frame(transparentize($c-b-gray, 0.4));
+}
+
+html {
+	@include fill-fixed;
+	@include block-reset;
+	@include no-select;
+	@include text-size-adjust(100%);
+	@include text-rendering-optimize;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
+	font-size: $font-size-abs; /* to be overriden with js according to window width */
+	body {
+		@include fill-fixed;
+		@include block-reset;
+		background: $c-background;
+		cursor: $cursor-auto;
+	}
+	a, button {
+		cursor: $cursor-pointer;
+		&:active {
+			cursor: $cursor-pointer-clicked;
+		}
+	}
+	p {
+		font-family: Inter;
+		font-style: normal;
+		font-weight: normal;
+		font-size: $font-size-rel;
+		line-height: $line-height-rel;
+		color: $c-default;
+		margin: 0 0 $grid-size-rel 0;
+		&:last-child {
+			margin: 0;
+		}
+	}
+}
+
+#viewport {
+	@include fill-fixed;
+	@include block-reset;
+	@include hardware-acceleration;
+	overflow: scroll;
+	#fil {
+		position: relative;
+		width: $bloc-width;
+		height: 100%;
+		margin: 0 auto;
+		padding: 0;
+		font-size: 0;
+		// background: $c-red;
+		.pub {
+			position: relative;
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 $pub-margin $pub-margin 0;
+		}
+		.pubs-wrapper {
+			&.pubs-wrapper-closed {
+				width: $bloc-width;
+				margin-left: 0;
+			}
+			&.pubs-wrapper-open {
+				width: ($bloc-width + $pub-margin) * 3;
+				margin-left: - $bloc-width - $pub-margin;
+			}
+		}
+	}
+}
+
+.bloc-wrapper {
+	display: inline-block;
+	width: $bloc-width;
+	margin: 0 $pub-margin 0 0;
+}
+
+.bloc {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: $bloc-padded-width;
+	margin: 0 $pub-margin 0 0;
+	padding: $bloc-padding;
+	background: $bloc-color;
+	box-shadow: 0 4px $grid-size-rel * 2 0 rgba(0, 0, 0, .3);
+	@include animation($bounce);
+	// &:hover {
+	// 	@include animation($wiggle);
+	// }
+	&.aut {
+		display: inline-flex;
+		align-items: center;
+		padding: 0 $bloc-padding;
+		border-radius: $bloc-border-radius $bloc-border-radius 0 0;
+		transform-origin: bottom;
+		.avatar {
+			width: $avatar-size;
+			height: $avatar-size;
+			border-radius: $avatar-size / 2;
+			margin: #{-$grid-size-rel} #{$grid-size-rel} #{-$grid-size-rel} 0;
+		}
+		p {
+			font-weight: bold;
+		}
+	}
+	&.med {
+		background: darken($bloc-color, 5%);
+		padding: 0 $bloc-padding;
+		height: $med-height;
+		transform-origin: center;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	&.dis {
+		border-radius: 0 0 $bloc-border-radius $bloc-border-radius;
+		transform-origin: top;
+	}
+}
+
+
+// draggable styles
+.draggable-source { /* this class is added with js */
+	cursor: $cursor-drag;
+	@include no-outline;
+}
+.draggable-mirror {
+	// position: absolute !important;
+	// position: fixed !important;
+	>* {
+		@include animation($pop);
+	}
+}
+body:not(.draggable--is-dragging) {
+	.draggable-source {
+		&:hover {
+			>* {
+				background: $bloc-hover-color;
+			}
+		}
+	}
+}
+.draggable--is-dragging,
+.draggable--is-dragging .draggable-mirror,
+.draggable--is-dragging .draggable-source {
+	cursor: $cursor-drag-clicked;
+}
+.draggable--is-dragging {
+	.draggable-source--is-dragging {
+		@include auto-alpha(0);
+	}
+	.draggable-mirror {
+		>* {
+			background: $bloc-active-color;
+		}
+	}
+}

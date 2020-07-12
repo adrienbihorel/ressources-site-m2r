@@ -1,0 +1,129 @@
+
+// variables
+
+// $golden-ratio: 1.61803398875;
+
+// mixins
+
+@mixin block-reset {
+	top: 0;
+	left: 0;
+	padding: 0;
+	margin: 0;
+}
+
+@mixin fill-fixed {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+@mixin hardware-acceleration {
+	transform: translate3d(0, 0, 0);
+}
+
+@mixin transform-translate($x, $y) {
+	transform: translate($x, $y);
+}
+
+@mixin transform-center {
+	@include transform-translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+@mixin transform-scale($v) {
+	-webkit-transform: scale($v);
+	transform: scale($v)
+}
+
+@mixin no-select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin text-size-adjust($v) {
+	-webkit-text-size-adjust: $v;
+	-moz-text-size-adjust: $v;
+	-ms-text-size-adjust: $v;
+	text-size-adjust: $v;
+}
+
+@mixin text-rendering-optimize {
+	text-rendering: optimizeLegibility;
+	// -webkit-font-smoothing: antialiased;
+	// -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin no-outline {
+	outline: 0;
+	border: none;
+	-moz-outline-style: none;
+}
+
+@mixin frame($c) {
+	background: linear-gradient(to bottom right, transparentize($c, 0.6), transparentize(adjust-hue($c, 120), 0.6));
+	box-shadow: inset 0 0 0 1px transparentize($c, 0);
+}
+
+@mixin animation($anim) {
+	-webkit-animation:
+		map-get($anim, name)
+		map-get($anim, duration)
+		map-get($anim, timing-function)
+		map-get($anim, delay)
+		map-get($anim, direction)
+		map-get($anim, iteration-count)
+		map-get($anim, fill-mode)
+		map-get($anim, play-state);
+	animation:
+		map-get($anim, name)
+		map-get($anim, duration)
+		map-get($anim, timing-function)
+		map-get($anim, delay)
+		map-get($anim, direction)
+		map-get($anim, iteration-count)
+		map-get($anim, fill-mode)
+		map-get($anim, play-state);
+}
+
+// @mixin text-outline {
+//   padding: 0 (map-get($vgrid_variables, local-margin-left) * 2 * 0.85) 0 (map-get($vgrid_variables, local-margin-left) * 0.85);
+//   box-shadow: inset 0 0 0 (map-get($vgrid_variables, local-weight)) $c-font;
+// }
+
+// @mixin text-underline {
+//   box-shadow: inset 0 (- map-get($vgrid_variables, local-weight)) 0 0 $c-font;
+// }
+
+// @mixin hs-gradient($c, $d, $s) {
+// 	background: linear-gradient($d, $c, adjust-hue($c, $s));
+// }
+
+@mixin auto-alpha($v) {
+	@if $v == 0 {
+		opacity: 0;
+		visibility: hidden;
+	} @else if $v == 1 {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+// functions
+
+// @function pow($number, $exponent) {
+//   $value: 1;
+//   @if $exponent > 0 {
+//     @for $i from 1 through $exponent {
+//       $value: $value * $number;
+//     }
+//   }
+//   @return $value;
+// }

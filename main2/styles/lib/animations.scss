@@ -1,0 +1,74 @@
+$pop: (
+	name: pop,
+	duration: 0.2s,
+	timing-function: cubic-bezier(.18, .67, .6, 1.22),
+	delay: 0s,
+	direction: normal,
+	iteration-count: 1,
+	fill-mode: both,
+	play-state: running
+);
+
+@keyframes pop {
+	0% {
+		@include transform-scale(1);
+	}
+	75% {
+		@include transform-scale(1.1);
+	}
+	to {
+		@include transform-scale(1.075);
+	}
+}
+
+$bounce: (
+	name: bounce,
+	duration: 0.2s,
+	timing-function: cubic-bezier(.25, 0, .25, 1),
+	delay: 0s,
+	direction: normal,
+	iteration-count: 1,
+	fill-mode: both,
+	play-state: running
+);
+
+@keyframes bounce {
+	0% {
+		@include transform-scale(1);
+	}
+	50% {
+		@include transform-scale(1.05);
+	}
+	to {
+		@include transform-scale(1);
+	}
+}
+
+$wiggle: (
+	name: wiggle,
+	duration: 0.8s,
+	timing-function: cubic-bezier(.5, 0, .5, 2),
+	delay: 0s,
+	direction: normal,
+	iteration-count: 1,
+	fill-mode: both,
+	play-state: running
+);
+
+@keyframes wiggle {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	50% {
+		transform: translate3d(- $grid-size-rel * 4, 0, 0);
+	}
+	66.67% {
+		transform: translate3d($grid-size-rel * 3, 0, 0);
+	}
+	83.33% {
+		transform: translate3d(- $grid-size-rel * 2, 0, 0);
+	}
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}

@@ -1,0 +1,54 @@
+
+$c-default: #E5E5E5;
+$c-gray: #999999;
+$c-brown: #937264;
+$c-orange: #FFA344;
+$c-yellow: #FFDC49;
+$c-green: #4DAB9A;
+$c-blue: #529CCA;
+$c-purple: #9A6DD7;
+$c-pink: #E255A1;
+$c-red: #FF7369;
+
+$c-b-default: #2F3437;
+$c-b-gray: #454B4E;
+$c-b-brown: #434040;
+$c-b-orange: #594A3A;
+$c-b-yellow: #59563B;
+$c-b-green: #354C4B;
+$c-b-blue: #364954;
+$c-b-purple: #443F57;
+$c-b-pink: #533B4C;
+$c-b-red: #594141;
+
+$c-background: #282C2F;
+
+
+.c-default {
+	fill: $c-default;
+	color: $c-default;
+}
+.c-background {
+	fill: $c-background;
+	background: $c-background;
+}
+.c-red {
+	fill: $c-red;
+	background: $c-red;
+}
+.c-green {
+	fill: $c-green;
+	background: $c-green;
+}
+.c-yellow {
+	fill: $c-yellow;
+	background: $c-yellow;
+}
+.c-darkgray {
+	fill: $c-b-default;
+	background: $c-b-default;
+}
+.c-gray {
+	fill: $c-gray;
+	background: $c-gray;
+}
