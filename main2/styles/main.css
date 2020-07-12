@@ -132,6 +132,8 @@ html {
 		left: 0;
 		padding: 0;
 		margin: 0;
+		transform: translate3d(0, 0, 0);
+		/* will mess up draggable if applied to #viewport */
 		background: #282C2F;
 		cursor: url("../images/draggable-cursors/cursor-auto.png"), auto; }
 	html a, html button {
@@ -158,7 +160,6 @@ html {
 	left: 0;
 	padding: 0;
 	margin: 0;
-	transform: translate3d(0, 0, 0);
 	overflow: scroll; }
 	#viewport #fil {
 		position: relative;

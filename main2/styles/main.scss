@@ -52,6 +52,7 @@ html {
 	body {
 		@include fill-fixed;
 		@include block-reset;
+		@include hardware-acceleration; /* will mess up draggable if applied to #viewport */
 		background: $c-background;
 		cursor: $cursor-auto;
 	}
@@ -78,7 +79,6 @@ html {
 #viewport {
 	@include fill-fixed;
 	@include block-reset;
-	@include hardware-acceleration;
 	overflow: scroll;
 	#fil {
 		position: relative;
